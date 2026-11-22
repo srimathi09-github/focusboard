@@ -395,15 +395,17 @@
 }
 
 /* ==============================
-   MIDDLE DASHBOARD CARDS
+   MIDDLE DASHBOARD / FOCUS NOTES
 ============================== */
 
 .dashboard-middle {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 1fr);
-  gap: 19px;
+  display: block;
+  width: 100%;
   margin-bottom: 28px;
 }
+
+/* Retained in case Task Overview is still
+   present in the JSX. */
 
 .focus-notes,
 .progress-card {
@@ -540,6 +542,8 @@
   background: #705cf6;
 }
 
+/* Progress card styles retained */
+
 .progress-card {
   display: flex;
   flex-direction: column;
@@ -639,6 +643,330 @@
 .progress-star {
   color: #e4ad51;
   font-size: 25px;
+}
+
+/* ==============================
+   FOCUS NOTES CAROUSEL
+   DESKTOP: 1106 x 152
+============================== */
+
+.focus-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 1106px;
+  height: 152px;
+  min-height: 152px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 18px;
+  color: #ffffff;
+  background: linear-gradient(
+    120deg,
+    #5935a5 0%,
+    #7046c6 48%,
+    #9065dc 100%
+  );
+  box-shadow: 0 12px 30px rgba(91, 54, 165, 0.16);
+}
+
+.focus-carousel::before,
+.focus-carousel::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.focus-carousel::before {
+  width: 250px;
+  height: 250px;
+  top: -140px;
+  right: 10%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.focus-carousel::after {
+  width: 190px;
+  height: 190px;
+  bottom: -125px;
+  left: 25%;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.focus-carousel-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 10px 25px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  animation: focusSlideEnter 0.35s ease both;
+}
+
+.focus-carousel-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.focus-carousel-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.focus-carousel-icon {
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+}
+
+.focus-carousel-label {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.focus-carousel-subtitle {
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 8px;
+}
+
+.focus-carousel-count {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.focus-carousel-content {
+  flex: 1;
+  min-height: 0;
+  padding: 4px 0;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 15px;
+}
+
+.focus-carousel-copy {
+  min-width: 0;
+}
+
+.focus-carousel-category {
+  display: inline-block;
+  margin-bottom: 5px;
+  color: #e2d5ff;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.focus-carousel-copy h2 {
+  margin: 0 0 5px;
+  color: #ffffff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.focus-carousel-copy p {
+  max-width: 430px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.focus-carousel-visual {
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.focus-task-card {
+  width: min(100%, 235px);
+  padding: 9px 13px;
+  box-sizing: border-box;
+  color: #37314e;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 7px 20px rgba(37, 18, 76, 0.14);
+}
+
+.focus-task-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.focus-task-check {
+  width: 19px;
+  height: 19px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: #39b58b;
+  border-radius: 50%;
+}
+
+.focus-task-status {
+  padding: 4px 7px;
+  color: #9a8cba;
+  background: #f2effa;
+  border-radius: 5px;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.focus-status-complete {
+  color: #329c79;
+  background: #e9f8f1;
+}
+
+.focus-task-card h3 {
+  margin: 7px 0;
+  color: #39334f;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.focus-task-progress-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  color: #918ba3;
+  font-size: 8px;
+}
+
+.focus-task-progress-track {
+  width: 100%;
+  height: 5px;
+  overflow: hidden;
+  background: #eeebf5;
+  border-radius: 20px;
+}
+
+.focus-task-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8b70ef, #b49afc);
+  border-radius: inherit;
+}
+
+.focus-task-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 7px;
+  color: #aaa4b8;
+  font-size: 8px;
+}
+
+.focus-task-complete {
+  color: #329c79;
+}
+
+.focus-carousel-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.focus-carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.focus-carousel-dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.42);
+  border: 0;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: width 0.2s ease, background 0.2s ease;
+}
+
+.focus-carousel-dot-active {
+  width: 19px;
+  background: #ffffff;
+}
+
+.focus-carousel-navigation {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.focus-carousel-navigation button {
+  appearance: none;
+  width: 27px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.focus-carousel-navigation button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+.focus-carousel-navigation button:focus-visible,
+.focus-carousel-dot:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+@keyframes focusSlideEnter {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Space below Focus Notes carousel */
+
+.focus-notes-section {
+  width: 100%;
+  margin-bottom: 28px;
 }
 
 /* ==============================
@@ -1295,9 +1623,31 @@
   .stats-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
 
-  .dashboard-middle {
-    grid-template-columns: 1fr;
+/* ==============================
+   CAROUSEL TABLET
+============================== */
+
+@media (max-width: 900px) {
+  .focus-carousel {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 190px;
+  }
+
+  .focus-carousel-inner {
+    min-height: 190px;
+    padding: 15px 20px;
+  }
+
+  .focus-carousel-copy h2 {
+    font-size: 20px;
+  }
+
+  .focus-notes-section {
+    margin-bottom: 22px;
   }
 }
 
@@ -1434,7 +1784,6 @@
   }
 
   .dashboard-middle {
-    gap: 12px;
     margin-bottom: 19px;
   }
 
@@ -1546,6 +1895,78 @@
 }
 
 /* ==============================
+   CAROUSEL MOBILE
+============================== */
+
+@media (max-width: 600px) {
+  .focus-carousel {
+    height: auto;
+    min-height: 350px;
+    border-radius: 15px;
+  }
+
+  .focus-carousel-inner {
+    height: auto;
+    min-height: 350px;
+    padding: 18px;
+  }
+
+  .focus-carousel-top {
+    align-items: flex-start;
+  }
+
+  .focus-carousel-content {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 18px 0;
+  }
+
+  .focus-carousel-copy h2 {
+    font-size: 22px;
+  }
+
+  .focus-carousel-copy p {
+    font-size: 10px;
+  }
+
+  .focus-carousel-visual {
+    justify-content: flex-end;
+  }
+
+  .focus-task-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .focus-carousel-bottom {
+    margin-top: auto;
+  }
+
+  .focus-notes-section {
+    margin-bottom: 18px;
+  }
+
+  .secondary-page {
+    padding-top: 8px;
+  }
+
+  .settings-grid,
+  .help-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .settings-card,
+  .help-card {
+    padding: 19px;
+  }
+
+  .secondary-page-heading h2 {
+    font-size: 23px;
+  }
+}
+
+/* ==============================
    SMALL MOBILE
 ============================== */
 
@@ -1587,417 +2008,19 @@
     grid-template-columns: 1fr;
     gap: 0;
   }
-}
-
-
-/* =========================================
-   FOCUS NOTES VISUAL CAROUSEL
-========================================= */
-
-.focus-carousel {
-  position: relative;
-  min-width: 0;
-  min-height: 290px;
-  overflow: hidden;
-  border-radius: 18px;
-  color: #ffffff;
-  background: linear-gradient(
-    120deg,
-    #5935a5 0%,
-    #7046c6 48%,
-    #9065dc 100%
-  );
-  box-shadow: 0 12px 30px rgba(91, 54, 165, 0.16);
-}
-
-.focus-carousel::before,
-.focus-carousel::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  border-radius: 50%;
-}
-
-.focus-carousel::before {
-  width: 250px;
-  height: 250px;
-  top: -140px;
-  right: 10%;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.focus-carousel::after {
-  width: 190px;
-  height: 190px;
-  bottom: -125px;
-  left: 25%;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.focus-carousel-inner {
-  position: relative;
-  z-index: 1;
-  min-height: 290px;
-  padding: 23px 25px 18px;
-  display: flex;
-  flex-direction: column;
-  animation: focusSlideEnter 0.35s ease both;
-}
-
-@keyframes focusSlideEnter {
-  from {
-    opacity: 0;
-    transform: translateY(9px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.focus-carousel-top,
-.focus-carousel-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.focus-carousel-brand {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-}
-
-.focus-carousel-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.16);
-}
-
-.focus-carousel-brand > div:last-child {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.focus-carousel-label {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-}
-
-.focus-carousel-subtitle {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 11px;
-}
-
-.focus-carousel-count {
-  padding: 7px 11px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 30px;
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.focus-carousel-content {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  gap: 15px;
-  padding: 18px 0;
-}
-
-.focus-carousel-copy {
-  min-width: 0;
-}
-
-.focus-carousel-category {
-  display: inline-block;
-  margin-bottom: 10px;
-  color: #e4d8ff;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-}
-
-.focus-carousel-copy h2 {
-  max-width: 320px;
-  margin: 0 0 10px;
-  color: #ffffff;
-  font-size: clamp(21px, 2vw, 27px);
-  font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: -0.8px;
-}
-
-.focus-carousel-copy p {
-  max-width: 300px;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.83);
-  font-size: 12px;
-  line-height: 1.7;
-}
-
-.focus-carousel-decoration {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin-top: 17px;
-  color: #e9ddff;
-  font-size: 10px;
-  font-weight: 600;
-}
-
-.focus-carousel-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 0;
-}
-
-.focus-task-card {
-  width: min(100%, 235px);
-  padding: 17px;
-  border-radius: 14px;
-  color: #29233a;
-  background: #ffffff;
-  box-shadow: 0 14px 35px rgba(31, 17, 63, 0.2);
-  transform: rotate(3deg);
-  transition: transform 0.3s ease;
-}
-
-.focus-task-card:hover {
-  transform: rotate(0deg) translateY(-3px);
-}
-
-.focus-task-complete {
-  transform: rotate(-3deg);
-}
-
-.focus-task-card-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 7px;
-}
-
-.focus-task-check {
-  width: 29px;
-  height: 29px;
-  display: grid;
-  place-items: center;
-  border-radius: 9px;
-  color: #ffffff;
-  background: #20ad70;
-}
-
-.focus-task-status {
-  padding: 5px 8px;
-  border-radius: 20px;
-  color: #a36a0b;
-  background: #fff3d7;
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.6px;
-}
-
-.focus-status-complete {
-  color: #138452;
-  background: #dcf8e9;
-}
-
-.focus-task-card h3 {
-  margin: 15px 0 18px;
-  color: #302a40;
-  font-size: 15px;
-  font-weight: 800;
-}
-
-.focus-task-progress-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  color: #8b8497;
-  font-size: 10px;
-}
-
-.focus-task-progress-heading strong {
-  color: #49357c;
-  font-size: 11px;
-}
-
-.focus-task-progress-track {
-  width: 100%;
-  height: 7px;
-  overflow: hidden;
-  border-radius: 20px;
-  background: #eeeaf4;
-}
-
-.focus-task-progress-fill {
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, #20ad70, #63d49b);
-  transition: width 0.5s ease;
-}
-
-.focus-task-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 14px;
-  color: #8b8497;
-  font-size: 9px;
-}
-
-.focus-task-bottom svg {
-  color: #20ad70;
-}
-
-.focus-carousel-bottom {
-  margin-top: auto;
-}
-
-.focus-carousel-dots {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.focus-carousel-dot {
-  width: 7px;
-  height: 7px;
-  padding: 0;
-  border: none;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.45);
-  cursor: pointer;
-  transition: width 0.25s ease, background 0.25s ease;
-}
-
-.focus-carousel-dot-active {
-  width: 23px;
-  background: #ffffff;
-}
-
-.focus-carousel-navigation {
-  display: flex;
-  gap: 8px;
-}
-
-.focus-carousel-navigation button {
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 50%;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.12);
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.focus-carousel-navigation button:hover {
-  background: rgba(255, 255, 255, 0.27);
-  transform: scale(1.06);
-}
-
-.focus-carousel-navigation button:focus-visible,
-.focus-carousel-dot:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 3px;
-}
-
-/* Tablet */
-@media (max-width: 900px) {
-  .focus-carousel-inner {
-    padding: 20px;
-  }
-
-  .focus-carousel-content {
-    grid-template-columns: 1fr 0.9fr;
-  }
-
-  .focus-task-card {
-    padding: 14px;
-  }
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  .focus-carousel,
-  .focus-carousel-inner {
-    min-height: 350px;
-  }
 
   .focus-carousel-inner {
-    padding: 18px;
-  }
-
-  .focus-carousel-content {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    padding: 17px 0;
+    padding: 15px;
   }
 
   .focus-carousel-copy h2 {
-    font-size: 22px;
-  }
-
-  .focus-carousel-copy p {
-    font-size: 11px;
-  }
-
-  .focus-carousel-decoration {
-    margin-top: 10px;
-  }
-
-  .focus-carousel-visual {
-    justify-content: flex-end;
-    padding-right: 8px;
-  }
-
-  .focus-task-card {
-    width: min(75%, 220px);
-    padding: 12px 14px;
-  }
-
-  .focus-task-card h3 {
-    margin: 10px 0 12px;
-  }
-
-  .focus-task-bottom {
-    margin-top: 10px;
+    font-size: 19px;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .focus-carousel-inner {
-    animation: none;
-  }
-
-  .focus-task-card,
-  .focus-task-progress-fill,
-  .focus-carousel-dot,
-  .focus-carousel-navigation button {
-    transition: none;
-  }
-}
-
-
-/* =========================================
+/* ==============================
    SETTINGS AND HELP PAGES
-========================================= */
+============================== */
 
 .secondary-page {
   min-height: 65vh;
@@ -2073,25 +2096,4 @@
   color: #7046c6;
   font-size: 11px;
   font-weight: 700;
-}
-
-@media (max-width: 600px) {
-  .secondary-page {
-    padding-top: 8px;
-  }
-
-  .settings-grid,
-  .help-grid {
-    grid-template-columns: 1fr;
-    gap: 13px;
-  }
-
-  .settings-card,
-  .help-card {
-    padding: 19px;
-  }
-
-  .secondary-page-heading h2 {
-    font-size: 23px;
-  }
 }

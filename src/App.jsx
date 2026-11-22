@@ -90,7 +90,6 @@ function App() {
     setActivePage(page);
     setSidebarOpen(false);
 
-    // Reset task filters when opening My Tasks
     if (page === "My Tasks") {
       setActiveFilter("All");
       setPriorityFilter("All");
@@ -259,6 +258,7 @@ function App() {
           {/* DASHBOARD PAGE */}
           {activePage === "Dashboard" && (
             <>
+              {/* WELCOME SECTION */}
               <section className="welcome-section">
                 <div>
                   <span className="welcome-date">
@@ -284,6 +284,12 @@ function App() {
                 </div>
               </section>
 
+              {/* FOCUS NOTES CAROUSEL */}
+              <section className="dashboard-middle">
+                <FocusNotes />
+              </section>
+
+              {/* TASK STATISTICS */}
               <section
                 className="stats-grid"
                 aria-label="Task statistics"
@@ -317,76 +323,14 @@ function App() {
                 />
               </section>
 
-              <section className="dashboard-middle">
-                <FocusNotes />
-
-                <section className="progress-card">
-                  <div className="progress-heading">
-                    <div>
-                      <span className="section-eyebrow">
-                        YOUR PROGRESS
-                      </span>
-                      <h2>Task Overview</h2>
-                    </div>
-
-                    <span className="progress-icon">↗</span>
-                  </div>
-
-                  <div className="progress-number">
-                    <strong>{completionRate}%</strong>
-                    <span>completed</span>
-                  </div>
-
-                  <div
-                    className="progress-track"
-                    role="progressbar"
-                    aria-label="Task completion"
-                    aria-valuenow={completionRate}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                  >
-                    <div
-                      className="progress-fill"
-                      style={{
-                        width: `${completionRate}%`,
-                      }}
-                    />
-                  </div>
-
-                  <div className="progress-summary">
-                    <span>{completedTasks} completed</span>
-                    <span>
-                      {totalTasks - completedTasks} remaining
-                    </span>
-                  </div>
-
-                  <div className="progress-divider" />
-
-                  <div className="progress-bottom">
-                    <div>
-                      <span className="progress-small-label">
-                        Keep it up!
-                      </span>
-
-                      <strong>
-                        You're making progress.
-                      </strong>
-                    </div>
-
-                    <span className="progress-star">✦</span>
-                  </div>
-                </section>
-              </section>
-
+              {/* TASK MANAGEMENT */}
               {renderTasksSection()}
             </>
           )}
 
           {/* MY TASKS PAGE */}
           {activePage === "My Tasks" && (
-            <>
-              {renderTasksSection()}
-            </>
+            renderTasksSection()
           )}
 
           {/* SETTINGS PAGE */}
@@ -399,6 +343,7 @@ function App() {
             <HelpSupport />
           )}
 
+          {/* FOOTER */}
           <footer className="app-footer">
             <span>© 2026 FocusBoard</span>
             <span>
